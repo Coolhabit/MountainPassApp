@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/blue_background"
+    tools:context=".MainActivity">
+
+    <ImageView
+        android:id="@+id/federation_logo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/logo_marginT"
+        android:src="@drawable/logo"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/tourism_image_1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/tour_image_marginT"
+        android:src="@drawable/tourism_vector_1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/federation_logo" />
+
+    <TextView
+        android:id="@+id/hashtags"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/entry_text_marginT"
+        android:text="@string/hashtags"
+        android:textAlignment="center"
+        android:textColor="@color/white"
+        android:textSize="@dimen/hashtag_text_size"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tourism_image_1" />
+
+    <TextView
+        android:id="@+id/task"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/entry_text_marginT"
+        android:text="@string/task"
+        android:textAlignment="center"
+        android:textColor="@color/white"
+        android:textSize="@dimen/task_text_size"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/hashtags" />
+
+    <TextView
+        android:id="@+id/task2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/entry_text_marginT"
+        android:text="@string/task2"
+        android:textAlignment="center"
+        android:textColor="@color/white"
+        android:textSize="@dimen/task2_text_size"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/task" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/enter_btn"
+        android:layout_width="@dimen/enter_btn_w"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/enter_btn_marginT"
+        android:backgroundTint="@color/white"
+        android:text="@string/enter_btn"
+        android:textColor="@color/black"
+        android:textSize="@dimen/enter_btn_text_size"
+        app:cornerRadius="@dimen/enter_btn_corner_rad"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/task2" />
+</androidx.constraintlayout.widget.ConstraintLayout>

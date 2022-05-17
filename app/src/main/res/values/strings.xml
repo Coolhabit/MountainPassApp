@@ -1,0 +1,25 @@
+<resources>
+    <string name="app_name">NekApp</string>
+    <string name="hashtags">#ПОХОДЫ #СВОБОДА #ПРЕОДОЛЕНИЯ #ОТКРЫТИЯ</string>
+    <string name="task">ОПИШИ ПЕРЕВАЛ</string>
+    <string name="task2">Наполняем каталог перевалов вместе</string>
+    <string name="enter_btn">ВОЙТИ</string>
+
+    <string name="reg_welcome">Добро пожаловать</string>
+    <string name="reg_meeting">Давайте знакомиться</string>
+    <string name="reg_achievements">Запишем вас: \n \u2022 в список помогавших наполнять базу перевалов \n \u2022 в качестве первопроходителей перевала, если он новый \n \u2022 в базу туристов ФСТР</string>
+    <string name="surname_hint">Фамилия</string>
+    <string name="name_hint">Имя</string>
+    <string name="patron_hint">Отчество</string>
+    <string name="email_hint">Email (логин и средство связи)</string>
+    <string name="email_text">youremail@mail.com</string>
+    <string name="phone_hint">Телефон (по желанию)</string>
+    <string name="social_hint">Ссылка на соцсети (по желанию)</string>
+    <string name="person_data_text">Используя приложение, вы даёте согласие ФСТР на обработку персональных данных</string>
+
+    <string name="content_description_more">Еще</string>
+    <string name="more">Еще</string>
+    <string name="content_description_search">Поиск</string>
+    <string name="search">Поиск</string>
+
+</resources>
