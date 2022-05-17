@@ -1,5 +1,6 @@
 package ru.coolhabit.nekapp
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import ru.coolhabit.nekapp.databinding.ActivityNekListBinding
@@ -12,5 +13,9 @@ class NekListActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityNekListBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        binding.fab.setOnClickListener {
+            startActivity(Intent(this@NekListActivity, NekAddActivity::class.java))
+        }
     }
 }

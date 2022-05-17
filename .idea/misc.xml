@@ -5,10 +5,12 @@
       <map>
         <entry key="..\:/Android/SDK/AndroidStudioProjects/NekApp/app/src/main/res/drawable/ic_add_24.xml" value="0.1" />
         <entry key="..\:/Android/SDK/AndroidStudioProjects/NekApp/app/src/main/res/drawable/ic_exit_to_app_24.xml" value="0.128" />
+        <entry key="..\:/Android/SDK/AndroidStudioProjects/NekApp/app/src/main/res/drawable/ic_info_24.xml" value="0.1425" />
         <entry key="..\:/Android/SDK/AndroidStudioProjects/NekApp/app/src/main/res/drawable/ic_menu_24.xml" value="0.1" />
         <entry key="..\:/Android/SDK/AndroidStudioProjects/NekApp/app/src/main/res/drawable/ic_stfr.xml" value="0.144" />
         <entry key="..\:/Android/SDK/AndroidStudioProjects/NekApp/app/src/main/res/drawable/stfr_logo.xml" value="0.144" />
         <entry key="..\:/Android/SDK/AndroidStudioProjects/NekApp/app/src/main/res/layout/activity_main.xml" value="0.1" />
+        <entry key="..\:/Android/SDK/AndroidStudioProjects/NekApp/app/src/main/res/layout/activity_nek_add.xml" value="0.25025641025641027" />
         <entry key="..\:/Android/SDK/AndroidStudioProjects/NekApp/app/src/main/res/layout/activity_nek_list.xml" value="0.2" />
         <entry key="..\:/Android/SDK/AndroidStudioProjects/NekApp/app/src/main/res/layout/activity_reg.xml" value="0.2" />
       </map>

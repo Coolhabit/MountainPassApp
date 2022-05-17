@@ -27,4 +27,7 @@
     <string name="neklist_instructions">Нажмите на + \n чтобы добавить перевал</string>
     <string name="neklist_link_text">Посмотреть базу перевалов</string>
 
+    //nekadd activity
+    <string name="add_welcome_text">Добавление перевала</string>
+    <string name="nekname_hint">Название перевала</string>
 </resources>
