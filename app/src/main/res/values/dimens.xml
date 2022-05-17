@@ -32,6 +32,10 @@
     <dimen name="end_margin_B">100dp</dimen>
     <dimen name="person_data_width">330dp</dimen>
 
+    //neklist activity
+
+    <dimen name="instructions_text_size">24sp</dimen>
+    <dimen name="link_text_size">16sp</dimen>
 
 
 </resources>

@@ -22,4 +22,9 @@
     <string name="content_description_search">Поиск</string>
     <string name="search">Поиск</string>
 
+    //neklist activity
+    <string name="username_default">Лоханкин Васисуалий</string>
+    <string name="neklist_instructions">Нажмите на + \n чтобы добавить перевал</string>
+    <string name="neklist_link_text">Посмотреть базу перевалов</string>
+
 </resources>
