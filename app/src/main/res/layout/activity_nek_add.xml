@@ -7,7 +7,7 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         tools:context=".NekAddActivity">
 
         <com.google.android.material.textview.MaterialTextView
@@ -15,9 +15,9 @@
             android:layout_width="wrap_content"
             android:layout_height="@dimen/reg_welcome_height"
             android:text="@string/add_welcome_text"
-            android:textStyle="bold"
             android:textColor="@color/black"
             android:textSize="@dimen/reg_welcome_text_size"
+            android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -51,34 +51,296 @@
         <TextView
             android:id="@+id/category_header"
             android:layout_width="wrap_content"
-            android:layout_marginTop="@dimen/margin_default"
-            android:layout_marginStart="@dimen/margin_default"
-            android:textSize="20sp"
-            android:textColor="@color/black"
             android:layout_height="wrap_content"
-            app:layout_constraintTop_toBottomOf="@id/nekname_layout"
+            android:layout_marginStart="@dimen/margin_default"
+            android:layout_marginTop="@dimen/margin_default"
+            android:text="@string/category_header"
+            android:textColor="@color/black"
+            android:textSize="@dimen/header_text_size"
             app:layout_constraintStart_toStartOf="parent"
-            android:text="Категория перевала"/>
+            app:layout_constraintTop_toBottomOf="@id/nekname_layout" />
 
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/margin_default"
             android:layout_marginEnd="@dimen/margin_default"
+            android:contentDescription="@string/info_icon"
             android:src="@drawable/ic_info_24"
-            app:layout_constraintTop_toBottomOf="@id/nekname_layout"
-            app:layout_constraintEnd_toEndOf="parent"/>
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/nekname_layout" />
 
-        <RadioGroup
+        <com.whygraphics.multilineradiogroup.MultiLineRadioGroup
             android:id="@+id/nek_difficulty"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/margin_default"
             android:layout_marginTop="@dimen/margin_default"
-            app:layout_constraintTop_toBottomOf="@id/category_header"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent">
+            app:layout_constraintTop_toBottomOf="@id/category_header">
 
-        </RadioGroup>
+            <RadioButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/margin_default"
+                android:background="@drawable/radio_selector"
+                android:button="@android:color/transparent"
+                android:elevation="@dimen/default_elevation"
+                android:padding="@dimen/margin_default"
+                android:text="@string/NK_category"
+                android:textColor="@color/radio_text_color" />
+
+            <RadioButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/margin_default"
+                android:background="@drawable/radio_selector"
+                android:button="@android:color/transparent"
+                android:elevation="@dimen/default_elevation"
+                android:padding="@dimen/margin_default"
+                android:text="@string/A_category"
+                android:textColor="@color/radio_text_color" />
+
+            <RadioButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/margin_default"
+                android:background="@drawable/radio_selector"
+                android:button="@android:color/transparent"
+                android:elevation="@dimen/default_elevation"
+                android:padding="@dimen/margin_default"
+                android:text="@string/B_category"
+                android:textColor="@color/radio_text_color" />
+
+            <RadioButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/margin_default"
+                android:background="@drawable/radio_selector"
+                android:button="@android:color/transparent"
+                android:elevation="@dimen/default_elevation"
+                android:padding="@dimen/margin_default"
+                android:text="@string/AA_category"
+                android:textColor="@color/radio_text_color" />
+
+            <RadioButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/margin_default"
+                android:background="@drawable/radio_selector"
+                android:button="@android:color/transparent"
+                android:elevation="@dimen/default_elevation"
+                android:padding="@dimen/margin_default"
+                android:text="@string/BB_category"
+                android:textColor="@color/radio_text_color" />
+
+            <RadioButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/margin_default"
+                android:background="@drawable/radio_selector"
+                android:button="@android:color/transparent"
+                android:elevation="@dimen/default_elevation"
+                android:padding="@dimen/margin_default"
+                android:text="@string/AAA_category"
+                android:textColor="@color/radio_text_color" />
+
+            <RadioButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/margin_default"
+                android:background="@drawable/radio_selector"
+                android:button="@android:color/transparent"
+                android:elevation="@dimen/default_elevation"
+                android:padding="@dimen/margin_default"
+                android:text="@string/BBB_category"
+                android:textColor="@color/radio_text_color" />
+        </com.whygraphics.multilineradiogroup.MultiLineRadioGroup>
+
+        <TextView
+            android:id="@+id/addition_header"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_default"
+            android:text="@string/addition_header"
+            app:layout_constraintStart_toStartOf="@id/category_header"
+            app:layout_constraintTop_toBottomOf="@id/nek_difficulty" />
+
+        <CheckBox
+            android:id="@+id/checkbox_weather"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_default"
+            android:background="@drawable/radio_selector"
+            android:button="@android:color/transparent"
+            android:text="@string/checkbox_weather"
+            android:textAlignment="center"
+            android:textColor="@color/radio_text_color"
+            app:layout_constraintStart_toStartOf="@id/category_header"
+            app:layout_constraintTop_toBottomOf="@id/addition_header" />
+
+        <CheckBox
+            android:id="@+id/checkbox_not_sure"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_default"
+            android:background="@drawable/radio_selector"
+            android:button="@android:color/transparent"
+            android:padding="@dimen/padding_min"
+            android:text="@string/checkbox_not_sure"
+            android:textAlignment="center"
+            android:textColor="@color/radio_text_color"
+            app:layout_constraintEnd_toStartOf="@id/checkbox_not_achieve"
+            app:layout_constraintStart_toEndOf="@id/checkbox_weather"
+            app:layout_constraintTop_toBottomOf="@id/addition_header" />
+
+        <CheckBox
+            android:id="@+id/checkbox_not_achieve"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_default"
+            android:background="@drawable/radio_selector"
+            android:button="@android:color/transparent"
+            android:padding="@dimen/padding_min"
+            android:text="@string/checkbox_not_achieve"
+            android:textAlignment="center"
+            android:textColor="@color/radio_text_color"
+            app:layout_constraintEnd_toEndOf="@id/nek_difficulty"
+            app:layout_constraintTop_toBottomOf="@id/addition_header" />
+
+        <TextView
+            android:id="@+id/checkbox_weather_instr"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_min"
+            android:text="@string/checkbox_weather_instr"
+            android:textSize="@dimen/checkbox_text_size"
+            app:layout_constraintStart_toStartOf="@id/checkbox_weather"
+            app:layout_constraintTop_toBottomOf="@id/checkbox_weather" />
+
+        <TextView
+            android:id="@+id/checkbox_not_sure_instr"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_min"
+            android:text="@string/checkbox_not_sure_instr"
+            android:textSize="@dimen/checkbox_text_size"
+            app:layout_constraintEnd_toEndOf="@id/checkbox_not_sure"
+            app:layout_constraintStart_toStartOf="@id/checkbox_not_sure"
+            app:layout_constraintTop_toBottomOf="@id/checkbox_not_sure" />
+
+        <TextView
+            android:id="@+id/checkbox_not_achieve_instr"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_min"
+            android:text="@string/checkbox_not_achieve_instr"
+            android:textSize="@dimen/checkbox_text_size"
+            app:layout_constraintEnd_toEndOf="@id/checkbox_not_achieve"
+            app:layout_constraintTop_toBottomOf="@id/checkbox_not_achieve" />
+
+        <View
+            android:id="@+id/barrier2"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/barrier_height"
+            android:layout_marginTop="@dimen/margin_default"
+            android:background="@color/light_grey"
+            app:layout_constraintTop_toBottomOf="@id/checkbox_weather_instr" />
+
+        <TextView
+            android:id="@+id/date_header"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/margin_default"
+            android:layout_marginTop="@dimen/margin_default"
+            android:text="@string/date_header"
+            android:textColor="@color/black"
+            android:textSize="@dimen/header_text_size"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/barrier2" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/datepicker_layout"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="@dimen/datepicker_width"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_default"
+            app:layout_constraintStart_toStartOf="@id/date_header"
+            app:layout_constraintTop_toBottomOf="@id/date_header">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/datepicker_field"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="date"
+                android:text="" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textview.MaterialTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="@id/checkbox_not_achieve"
+            app:layout_constraintTop_toTopOf="@id/datepicker_layout"
+            app:layout_constraintBottom_toBottomOf="@id/datepicker_layout"
+            android:text="@string/current_date_text"/>
+
+        <View
+            android:id="@+id/barrier3"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/barrier_height"
+            android:layout_marginTop="@dimen/margin_default"
+            android:background="@color/light_grey"
+            app:layout_constraintTop_toBottomOf="@id/datepicker_layout" />
+
+        <TextView
+            android:id="@+id/coordinates_header"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/margin_default"
+            android:layout_marginTop="@dimen/margin_default"
+            android:text="@string/coordinates_header"
+            android:textColor="@color/black"
+            android:textSize="@dimen/header_text_size"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/barrier3" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/coordinates_layout"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="@dimen/coordinates_width"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_default"
+            app:layout_constraintStart_toStartOf="@id/coordinates_header"
+            app:layout_constraintTop_toBottomOf="@id/coordinates_header">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/coordinates_field"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="text"
+                android:text="" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/nekheight_layout"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="@dimen/nekheight_width"
+            android:layout_height="wrap_content"
+            android:hint="@string/nekheight_hint"
+            android:layout_marginTop="@dimen/margin_default"
+            app:layout_constraintEnd_toEndOf="@id/checkbox_not_achieve"
+            app:layout_constraintTop_toBottomOf="@id/coordinates_header">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/nekheight_field"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="text"
+                android:text="" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>

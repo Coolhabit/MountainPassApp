@@ -28,6 +28,27 @@
     <string name="neklist_link_text">Посмотреть базу перевалов</string>
 
     //nekadd activity
+    <string name="info_icon">Инфо-иконка</string>
     <string name="add_welcome_text">Добавление перевала</string>
     <string name="nekname_hint">Название перевала</string>
+    <string name="checkbox_weather_instr">Сложность существенно \n увеличится в зависимости \n от погодных условий \n (снегопад, внезапное \n облединение склонов и пр.)</string>
+    <string name="checkbox_not_sure_instr">Если вы не уверены \n в оценке категории</string>
+    <string name="checkbox_not_achieve_instr">Если вы не прошли \n этот перевал</string>
+    <string name="category_header">Категория перевала</string>
+    <string name="NK_category">Н/К</string>
+    <string name="A_category">1А</string>
+    <string name="B_category">1Б</string>
+    <string name="AA_category">2А</string>
+    <string name="BB_category">2Б</string>
+    <string name="AAA_category">3А</string>
+    <string name="BBB_category">3Б</string>
+    <string name="addition_header">Добавить</string>
+    <string name="checkbox_weather">*</string>
+    <string name="checkbox_not_sure">не уверен</string>
+    <string name="checkbox_not_achieve">оценочно</string>
+    <string name="date_header">Дата прохождения</string>
+    <string name="current_date_text">Сегодня: 18.05.2022</string>
+    <string name="coordinates_header">Координаты</string>
+    <string name="nekheight_hint">Высота</string>
+
 </resources>
