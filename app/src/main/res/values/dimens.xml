@@ -47,6 +47,9 @@
     <dimen name="coordinates_width">200dp</dimen>
     <dimen name="nekheight_width">120dp</dimen>
 
+    <dimen name="photo_hint_text_size">18sp</dimen>
+    <dimen name="photo_icons_size">49dp</dimen>
+
 
 
 </resources>

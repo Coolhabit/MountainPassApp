@@ -31,11 +31,13 @@
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/nekname_layout"
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            style="@style/Theme.NekApp.InputBox"
             android:layout_width="@dimen/input_width"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/margin_default"
             android:hint="@string/nekname_hint"
+            app:boxStrokeColor="@color/blue_background"
+            app:hintTextColor="@color/blue_background"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/barrier">
@@ -262,7 +264,7 @@
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/datepicker_layout"
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            style="@style/Theme.NekApp.InputBox"
             android:layout_width="@dimen/datepicker_width"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/margin_default"
@@ -280,10 +282,10 @@
         <com.google.android.material.textview.MaterialTextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:layout_constraintEnd_toEndOf="@id/checkbox_not_achieve"
-            app:layout_constraintTop_toTopOf="@id/datepicker_layout"
+            android:text="@string/current_date_text"
             app:layout_constraintBottom_toBottomOf="@id/datepicker_layout"
-            android:text="@string/current_date_text"/>
+            app:layout_constraintEnd_toEndOf="@id/checkbox_not_achieve"
+            app:layout_constraintTop_toTopOf="@id/datepicker_layout" />
 
         <View
             android:id="@+id/barrier3"
@@ -307,7 +309,7 @@
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/coordinates_layout"
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            style="@style/Theme.NekApp.InputBox"
             android:layout_width="@dimen/coordinates_width"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/margin_default"
@@ -324,11 +326,11 @@
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/nekheight_layout"
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            style="@style/Theme.NekApp.InputBox"
             android:layout_width="@dimen/nekheight_width"
             android:layout_height="wrap_content"
-            android:hint="@string/nekheight_hint"
             android:layout_marginTop="@dimen/margin_default"
+            android:hint="@string/nekheight_hint"
             app:layout_constraintEnd_toEndOf="@id/checkbox_not_achieve"
             app:layout_constraintTop_toBottomOf="@id/coordinates_header">
 
@@ -340,7 +342,132 @@
                 android:text="" />
         </com.google.android.material.textfield.TextInputLayout>
 
+        <TextView
+            android:id="@+id/photo_header"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/margin_default"
+            android:layout_marginTop="@dimen/margin_default"
+            android:text="@string/photo_header"
+            android:textColor="@color/black"
+            android:textSize="@dimen/header_text_size"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/nekheight_layout" />
 
+        <TextView
+            android:id="@+id/photo_hint"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/photo_hint"
+            android:textSize="@dimen/photo_hint_text_size"
+            android:textStyle="italic"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/photo_header" />
+
+        <ImageView
+            android:id="@+id/photo_btn_memory"
+            android:layout_width="@dimen/photo_icons_size"
+            android:layout_height="@dimen/photo_icons_size"
+            android:layout_marginTop="@dimen/margin_default"
+            android:contentDescription="@string/photo_btn_memory_descr"
+            android:src="@drawable/photo_memory"
+            app:layout_constraintEnd_toStartOf="@id/photo_btn_camera"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/photo_hint" />
+
+        <ImageView
+            android:id="@+id/photo_btn_camera"
+            android:layout_width="@dimen/photo_icons_size"
+            android:layout_height="@dimen/photo_icons_size"
+            android:layout_marginTop="@dimen/margin_default"
+            android:clickable="true"
+            android:contentDescription="@string/photo_btn_camera_descr"
+            android:focusable="true"
+            android:src="@drawable/photo_camera"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/photo_btn_memory"
+            app:layout_constraintTop_toBottomOf="@id/photo_hint" />
+
+        <TextView
+            android:id="@+id/from_gallery"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:clickable="true"
+            android:focusable="true"
+            android:text="@string/from_gallery"
+            app:layout_constraintEnd_toEndOf="@id/photo_btn_memory"
+            app:layout_constraintStart_toStartOf="@id/photo_btn_memory"
+            app:layout_constraintTop_toBottomOf="@id/photo_btn_memory" />
+
+        <TextView
+            android:id="@+id/from_camera"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/from_camera"
+            app:layout_constraintEnd_toEndOf="@id/photo_btn_camera"
+            app:layout_constraintStart_toStartOf="@id/photo_btn_camera"
+            app:layout_constraintTop_toBottomOf="@id/photo_btn_camera" />
+
+        <ImageView
+            android:id="@+id/nek_photo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/margin_min"
+            android:layout_marginTop="@dimen/margin_default"
+            android:contentDescription="@string/nek_photo_descr"
+            android:cropToPadding="true"
+            android:scaleType="centerInside"
+            android:src="@drawable/tourism_vector_2"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/from_camera" />
+
+        <TextView
+            android:id="@+id/photo_description_header"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/margin_default"
+            android:layout_marginTop="@dimen/margin_default"
+            android:text="@string/photo_description_header"
+            android:textColor="@color/black"
+            android:textSize="@dimen/header_text_size"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/nek_photo" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/photo_description_layout"
+            style="@style/Theme.NekApp.InputBox"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/margin_min"
+            android:layout_marginTop="@dimen/margin_default"
+            android:hint="@string/photo_description_hint"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/photo_description_header">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/photo_description_field"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textMultiLine"
+                android:text="@string/photo_description_default" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/send_btn"
+            android:layout_width="@dimen/enter_btn_width"
+            android:layout_height="@dimen/enter_btn_height"
+            android:layout_marginTop="@dimen/margin_default"
+            android:backgroundTint="@color/text_blue"
+            android:text="@string/send_btn"
+            android:textColor="@color/white"
+            android:textSize="@dimen/enter_btn_text_size"
+            app:cornerRadius="@dimen/enter_btn_corner_rad"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/photo_description_layout" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>

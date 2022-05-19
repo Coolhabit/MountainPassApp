@@ -50,5 +50,17 @@
     <string name="current_date_text">Сегодня: 18.05.2022</string>
     <string name="coordinates_header">Координаты</string>
     <string name="nekheight_hint">Высота</string>
+    <string name="photo_header">Фото</string>
+    <string name="photo_hint">Добавьте фото</string>
 
+    <string name="photo_btn_memory_descr">Загрузить из галереи</string>
+    <string name="photo_btn_camera_descr">Сделать фото</string>
+
+    <string name="from_gallery">из галереи</string>
+    <string name="from_camera">с камеры</string>
+    <string name="nek_photo_descr">Фото перевала</string>
+    <string name="photo_description_header">Поясните, что на фото</string>
+    <string name="photo_description_hint">Описание фото</string>
+    <string name="photo_description_default">Перевал соединяет озеро Верхнее Крепкое и реку Тихая. При подъеме открываются красивые виды на озеро Крепкое. После подъема более плоский участок.</string>
+    <string name="send_btn">ОТПРАВИТЬ</string>
 </resources>
