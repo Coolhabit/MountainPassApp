@@ -26,7 +26,7 @@
     <dimen name="reg_achievements_width">300dp</dimen>
     <dimen name="input_width">300dp</dimen>
 
-    <dimen name="enter_btn_width">343dp</dimen>
+    <dimen name="enter_btn_width">300dp</dimen>
     <dimen name="enter_btn_height">50dp</dimen>
 
     <dimen name="end_margin_B">100dp</dimen>

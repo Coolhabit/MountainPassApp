@@ -37,8 +37,8 @@
         android:textColor="@color/white"
         android:textSize="@dimen/hashtag_text_size"
         android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="@id/task"
+        app:layout_constraintStart_toStartOf="@id/task"
         app:layout_constraintTop_toBottomOf="@id/tourism_image_1" />
 
     <TextView

@@ -1,6 +1,6 @@
 <resources>
     <string name="app_name">NekApp</string>
-    <string name="hashtags">#ПОХОДЫ #СВОБОДА #ПРЕОДОЛЕНИЯ #ОТКРЫТИЯ</string>
+    <string name="hashtags">#ПОХОДЫ #СВОБОДА \n #ПРЕОДОЛЕНИЯ #ОТКРЫТИЯ</string>
     <string name="task">ОПИШИ ПЕРЕВАЛ</string>
     <string name="task2">Наполняем каталог перевалов вместе</string>
     <string name="enter_btn">ВОЙТИ</string>

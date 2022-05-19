@@ -413,14 +413,14 @@
             android:id="@+id/nek_photo"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginHorizontal="@dimen/margin_min"
+            android:layout_marginHorizontal="@dimen/margin_default"
             android:layout_marginTop="@dimen/margin_default"
             android:contentDescription="@string/nek_photo_descr"
             android:cropToPadding="true"
             android:scaleType="centerInside"
             android:src="@drawable/tourism_vector_2"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="@id/nek_difficulty"
+            app:layout_constraintStart_toStartOf="@id/nek_difficulty"
             app:layout_constraintTop_toBottomOf="@id/from_camera" />
 
         <TextView
@@ -440,11 +440,11 @@
             style="@style/Theme.NekApp.InputBox"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginHorizontal="@dimen/margin_min"
+            android:layout_marginHorizontal="@dimen/margin_default"
             android:layout_marginTop="@dimen/margin_default"
             android:hint="@string/photo_description_hint"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@id/nek_difficulty"
+            app:layout_constraintEnd_toEndOf="@id/nek_difficulty"
             app:layout_constraintTop_toBottomOf="@id/photo_description_header">
 
             <com.google.android.material.textfield.TextInputEditText
@@ -457,16 +457,17 @@
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/send_btn"
-            android:layout_width="@dimen/enter_btn_width"
+            android:layout_width="match_parent"
             android:layout_height="@dimen/enter_btn_height"
             android:layout_marginTop="@dimen/margin_default"
+            android:layout_marginHorizontal="@dimen/margin_default"
             android:backgroundTint="@color/text_blue"
             android:text="@string/send_btn"
             android:textColor="@color/white"
             android:textSize="@dimen/enter_btn_text_size"
             app:cornerRadius="@dimen/enter_btn_corner_rad"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="@id/nek_difficulty"
+            app:layout_constraintStart_toStartOf="@id/nek_difficulty"
             app:layout_constraintTop_toBottomOf="@id/photo_description_layout" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>

@@ -180,8 +180,8 @@
                 android:textColor="@color/white"
                 android:textSize="@dimen/enter_btn_text_size"
                 app:cornerRadius="@dimen/enter_btn_corner_rad"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="@+id/surname_layout"
+                app:layout_constraintStart_toStartOf="@+id/surname_layout"
                 app:layout_constraintTop_toBottomOf="@id/social_layout" />
 
             <com.google.android.material.textview.MaterialTextView
