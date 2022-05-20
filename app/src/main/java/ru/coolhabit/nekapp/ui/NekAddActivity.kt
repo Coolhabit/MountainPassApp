@@ -1,4 +1,4 @@
-package ru.coolhabit.nekapp
+package ru.coolhabit.nekapp.ui
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle

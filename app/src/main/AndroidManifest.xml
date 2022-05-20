@@ -2,6 +2,9 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="ru.coolhabit.nekapp">
 
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -10,13 +13,13 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.NekApp">
         <activity
-            android:name=".NekAddActivity"
+            android:name=".ui.NekAddActivity"
             android:exported="false" />
         <activity
-            android:name=".NekListActivity"
+            android:name=".ui.NekListActivity"
             android:exported="false" />
         <activity
-            android:name=".RegActivity"
+            android:name=".ui.RegActivity"
             android:exported="false" />
         <activity
             android:name=".MainActivity"
