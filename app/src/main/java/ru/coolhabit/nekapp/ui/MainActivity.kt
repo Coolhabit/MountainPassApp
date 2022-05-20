@@ -1,15 +1,14 @@
-package ru.coolhabit.nekapp
+package ru.coolhabit.nekapp.ui
 
 import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.preference.PreferenceManager
 import com.google.gson.Gson
 import ru.coolhabit.nekapp.data.User
 import ru.coolhabit.nekapp.databinding.ActivityMainBinding
-import ru.coolhabit.nekapp.ui.NekListActivity
-import ru.coolhabit.nekapp.ui.RegActivity
+import ru.coolhabit.nekapp.ui.activities.NekListActivity
+import ru.coolhabit.nekapp.ui.activities.RegActivity
 
 class MainActivity : AppCompatActivity() {
 

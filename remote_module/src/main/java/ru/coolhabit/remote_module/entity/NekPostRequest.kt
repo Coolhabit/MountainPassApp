@@ -13,7 +13,7 @@ private const val TYPE = "type"
 private const val LEVEL = "level"
 private const val IMAGES = "images"
 
-data class NekPostResponse (
+data class NekPostRequest (
     @SerializedName(BEAUTY_TITLE)
     val beautyTitle: String,
     @SerializedName(TITLE)

@@ -14,16 +14,16 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.NekApp">
         <activity
-            android:name=".ui.NekAddActivity"
+            android:name=".ui.activities.NekAddActivity"
             android:exported="false" />
         <activity
-            android:name=".ui.NekListActivity"
+            android:name=".ui.activities.NekListActivity"
             android:exported="false" />
         <activity
-            android:name=".ui.RegActivity"
+            android:name=".ui.activities.RegActivity"
             android:exported="false" />
         <activity
-            android:name=".MainActivity"
+            android:name=".ui.MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
