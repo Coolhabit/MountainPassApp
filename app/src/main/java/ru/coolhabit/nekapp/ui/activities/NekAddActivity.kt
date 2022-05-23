@@ -25,7 +25,8 @@ import java.text.SimpleDateFormat
 import java.util.*
 
 private const val NOW = "Сегодня: "
-private const val PICTURE_FROM_CAMERA: Int = 1
+private const val PICTURE_FROM_CAMERA = 1
+private const val PICTURE_FROM_GALLERY = 2
 private const val AUTHORITY = "ru.coolhabit.nekapp.fileprovider"
 
 class NekAddActivity : AppCompatActivity() {
@@ -39,7 +40,7 @@ class NekAddActivity : AppCompatActivity() {
     var cal = Calendar.getInstance()
     private lateinit var photoFile: File
     lateinit var currentPhotoPath: String
-
+    private var imageUri: Uri? = null
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -98,6 +99,11 @@ class NekAddActivity : AppCompatActivity() {
                 cal.get(Calendar.DAY_OF_MONTH)
             ).show()
         }
+
+        binding.photoBtnMemory.setOnClickListener {
+            val gallery = Intent(Intent.ACTION_PICK, MediaStore.Images.Media.INTERNAL_CONTENT_URI)
+            startActivityForResult(gallery, PICTURE_FROM_GALLERY)
+        }
     }
 
     private fun updateDateInView() {
@@ -112,7 +118,7 @@ class NekAddActivity : AppCompatActivity() {
         binding.currentDate.text = NOW + sdf.format(cal.time)
     }
 
-    private fun takePicture(){
+    private fun takePicture() {
         val pictureIntent = Intent(MediaStore.ACTION_IMAGE_CAPTURE)
         photoFile = createImageFile()
         val uri = FileProvider.getUriForFile(this, AUTHORITY, photoFile)
@@ -132,12 +138,24 @@ class NekAddActivity : AppCompatActivity() {
         if (resultCode == Activity.RESULT_OK) {
 
             if (requestCode == PICTURE_FROM_CAMERA) {
-                val uri = FileProvider.getUriForFile(this,AUTHORITY, photoFile)
+                val uri = FileProvider.getUriForFile(this, AUTHORITY, photoFile)
                 binding.nekPhoto.visibility = View.VISIBLE
                 binding.photoDescriptionHeader.visibility = View.VISIBLE
                 binding.photoDescriptionLayout.visibility = View.VISIBLE
                 binding.sendBtn.visibility = View.VISIBLE
                 binding.nekPhoto.setImageURI(uri)
+                binding.photoBtnCamera.visibility = View.GONE
+                binding.photoBtnMemory.visibility = View.GONE
+                binding.fromCamera.visibility = View.GONE
+                binding.fromGallery.visibility = View.GONE
+                binding.photoHint.visibility = View.GONE
+            } else if (requestCode == PICTURE_FROM_GALLERY) {
+                binding.nekPhoto.visibility = View.VISIBLE
+                imageUri = data?.data
+                binding.nekPhoto.setImageURI(imageUri)
+                binding.photoDescriptionHeader.visibility = View.VISIBLE
+                binding.photoDescriptionLayout.visibility = View.VISIBLE
+                binding.sendBtn.visibility = View.VISIBLE
                 binding.photoBtnCamera.visibility = View.GONE
                 binding.photoBtnMemory.visibility = View.GONE
                 binding.fromCamera.visibility = View.GONE
