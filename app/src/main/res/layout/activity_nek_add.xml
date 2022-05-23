@@ -265,11 +265,13 @@
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/datepicker_layout"
             style="@style/Theme.NekApp.InputBox"
+            android:clickable="true"
             android:layout_width="@dimen/datepicker_width"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/margin_default"
             app:layout_constraintStart_toStartOf="@id/date_header"
-            app:layout_constraintTop_toBottomOf="@id/date_header">
+            app:layout_constraintTop_toBottomOf="@id/date_header"
+            android:focusable="true">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/datepicker_field"
@@ -280,6 +282,7 @@
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/current_date"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/current_date_text"
@@ -308,16 +311,35 @@
             app:layout_constraintTop_toBottomOf="@id/barrier3" />
 
         <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/coordinates_layout"
+            android:id="@+id/latitude_layout"
             style="@style/Theme.NekApp.InputBox"
-            android:layout_width="@dimen/coordinates_width"
+            android:layout_width="@dimen/coordinates_field_width"
             android:layout_height="wrap_content"
+            android:hint="@string/latitude_hint"
             android:layout_marginTop="@dimen/margin_default"
             app:layout_constraintStart_toStartOf="@id/coordinates_header"
             app:layout_constraintTop_toBottomOf="@id/coordinates_header">
 
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/coordinates_field"
+                android:id="@+id/latitude_field"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="text"
+                android:text="" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/longtitude_layout"
+            style="@style/Theme.NekApp.InputBox"
+            android:layout_width="@dimen/coordinates_field_width"
+            android:layout_height="wrap_content"
+            android:hint="@string/longtitude_hint"
+            android:layout_marginTop="@dimen/margin_default"
+            app:layout_constraintStart_toStartOf="@id/coordinates_header"
+            app:layout_constraintTop_toBottomOf="@id/latitude_layout">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/longtitude_field"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="text"
@@ -327,12 +349,13 @@
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/nekheight_layout"
             style="@style/Theme.NekApp.InputBox"
-            android:layout_width="@dimen/nekheight_width"
+            android:layout_width="@dimen/coordinates_field_width"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/margin_default"
             android:hint="@string/nekheight_hint"
             app:layout_constraintEnd_toEndOf="@id/checkbox_not_achieve"
-            app:layout_constraintTop_toBottomOf="@id/coordinates_header">
+            app:layout_constraintTop_toTopOf="@id/latitude_layout"
+            app:layout_constraintBottom_toBottomOf="@id/longtitude_layout">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/nekheight_field"
@@ -352,7 +375,7 @@
             android:textColor="@color/black"
             android:textSize="@dimen/header_text_size"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/nekheight_layout" />
+            app:layout_constraintTop_toBottomOf="@id/longtitude_layout" />
 
         <TextView
             android:id="@+id/photo_hint"

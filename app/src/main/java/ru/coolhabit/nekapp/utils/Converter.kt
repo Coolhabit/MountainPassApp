@@ -14,9 +14,9 @@ object Converter {
             otherTitles = "нет",
             connect = "",
             type = "pass",
-            user = UserRequest(1, "pochta", "iphone", "nikonorov", "aleksandr"),
-            coords = CoordsRequest("25.32", "32.32", "1800"),
-            level = LevelRequest("1A", "", "", "1B"),
+            user = UserRequest(nek.userId, nek.userEmail, nek.userPhone, nek.userSurname, nek.userName),
+            coords = CoordsRequest(nek.latitude, nek.longtitude, nek.height),
+            level = LevelRequest(nek.level, nek.level, nek.level, nek.level),
             images = list
         )
     }

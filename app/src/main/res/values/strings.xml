@@ -47,9 +47,11 @@
     <string name="checkbox_not_sure">не уверен</string>
     <string name="checkbox_not_achieve">оценочно</string>
     <string name="date_header">Дата прохождения</string>
-    <string name="current_date_text">Сегодня: 18.05.2022</string>
+    <string name="current_date_text">Сегодня: </string>
     <string name="coordinates_header">Координаты</string>
-    <string name="nekheight_hint">Высота</string>
+    <string name="latitude_hint">Широта (Х.ХХ)</string>
+    <string name="longtitude_hint">Долгота (Х.ХХ)</string>
+    <string name="nekheight_hint">Высота (метров)</string>
     <string name="photo_header">Фото</string>
     <string name="photo_hint">Добавьте фото</string>
 
