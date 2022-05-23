@@ -365,6 +365,14 @@
                 android:text="" />
         </com.google.android.material.textfield.TextInputLayout>
 
+        <View
+            android:id="@+id/barrier4"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/barrier_height"
+            android:layout_marginTop="@dimen/margin_default"
+            android:background="@color/light_grey"
+            app:layout_constraintTop_toBottomOf="@id/longtitude_layout" />
+
         <TextView
             android:id="@+id/photo_header"
             android:layout_width="wrap_content"
@@ -375,7 +383,7 @@
             android:textColor="@color/black"
             android:textSize="@dimen/header_text_size"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/longtitude_layout" />
+            app:layout_constraintTop_toBottomOf="@id/barrier4" />
 
         <TextView
             android:id="@+id/photo_hint"
@@ -434,6 +442,7 @@
 
         <ImageView
             android:id="@+id/nek_photo"
+            android:visibility="gone"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="@dimen/margin_default"
@@ -448,6 +457,7 @@
 
         <TextView
             android:id="@+id/photo_description_header"
+            android:visibility="gone"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/margin_default"
@@ -460,6 +470,7 @@
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/photo_description_layout"
+            android:visibility="gone"
             style="@style/Theme.NekApp.InputBox"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -480,6 +491,7 @@
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/send_btn"
+            android:visibility="gone"
             android:layout_width="match_parent"
             android:layout_height="@dimen/enter_btn_height"
             android:layout_marginTop="@dimen/margin_default"

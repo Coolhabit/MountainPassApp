@@ -1,9 +1,18 @@
 package ru.coolhabit.nekapp.ui.activities
 
+import android.app.Activity
 import android.app.DatePickerDialog
 import android.content.Context
+import android.content.Intent
+import android.content.pm.PackageManager
+import android.content.pm.ResolveInfo
+import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.os.Environment
+import android.provider.MediaStore
+import android.view.View
+import androidx.core.content.FileProvider
 import androidx.lifecycle.ViewModelProvider
 import com.google.gson.Gson
 import ru.coolhabit.nekapp.data.Nek
@@ -11,10 +20,13 @@ import ru.coolhabit.nekapp.data.User
 import ru.coolhabit.nekapp.databinding.ActivityNekAddBinding
 import ru.coolhabit.nekapp.ui.viewmodels.NekAddActivityViewModel
 import ru.coolhabit.nekapp.utils.AutoDisposable
+import java.io.File
 import java.text.SimpleDateFormat
 import java.util.*
 
 private const val NOW = "Сегодня: "
+private const val PICTURE_FROM_CAMERA: Int = 1
+private const val AUTHORITY = "ru.coolhabit.nekapp.fileprovider"
 
 class NekAddActivity : AppCompatActivity() {
     private val viewModel by lazy {
@@ -25,6 +37,9 @@ class NekAddActivity : AppCompatActivity() {
     private lateinit var binding: ActivityNekAddBinding
     private val autoDisposable = AutoDisposable()
     var cal = Calendar.getInstance()
+    private lateinit var photoFile: File
+    lateinit var currentPhotoPath: String
+
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -38,6 +53,10 @@ class NekAddActivity : AppCompatActivity() {
         }
 
         currentDateTextView()
+
+        binding.photoBtnCamera.setOnClickListener {
+            takePicture()
+        }
 
         binding.sendBtn.setOnClickListener {
             val shared = this.getSharedPreferences("settings", Context.MODE_PRIVATE)
@@ -91,5 +110,42 @@ class NekAddActivity : AppCompatActivity() {
         val myFormat = "dd/MM/yyyy"
         val sdf = SimpleDateFormat(myFormat, Locale.UK)
         binding.currentDate.text = NOW + sdf.format(cal.time)
+    }
+
+    private fun takePicture(){
+        val pictureIntent = Intent(MediaStore.ACTION_IMAGE_CAPTURE)
+        photoFile = createImageFile()
+        val uri = FileProvider.getUriForFile(this, AUTHORITY, photoFile)
+        pictureIntent.putExtra(MediaStore.EXTRA_OUTPUT, uri)
+        startActivityForResult(pictureIntent, PICTURE_FROM_CAMERA)
+    }
+
+    private fun createImageFile(): File {
+        val timeStamp: String = SimpleDateFormat("yyyyMMdd_HHmmss").format(Date())
+        val storageDir: File? = getExternalFilesDir(Environment.DIRECTORY_PICTURES)
+        return File.createTempFile("JPEG_${timeStamp}_", ".jpg", storageDir).apply {
+            currentPhotoPath = absolutePath
+        }
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        if (resultCode == Activity.RESULT_OK) {
+
+            if (requestCode == PICTURE_FROM_CAMERA) {
+                val uri = FileProvider.getUriForFile(this,AUTHORITY, photoFile)
+                binding.nekPhoto.visibility = View.VISIBLE
+                binding.photoDescriptionHeader.visibility = View.VISIBLE
+                binding.photoDescriptionLayout.visibility = View.VISIBLE
+                binding.sendBtn.visibility = View.VISIBLE
+                binding.nekPhoto.setImageURI(uri)
+                binding.photoBtnCamera.visibility = View.GONE
+                binding.photoBtnMemory.visibility = View.GONE
+                binding.fromCamera.visibility = View.GONE
+                binding.fromGallery.visibility = View.GONE
+                binding.photoHint.visibility = View.GONE
+            }
+        } else {
+            super.onActivityResult(requestCode, resultCode, data)
+        }
     }
 }
