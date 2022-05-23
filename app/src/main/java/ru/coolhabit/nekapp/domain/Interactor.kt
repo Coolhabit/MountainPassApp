@@ -9,10 +9,6 @@ import ru.coolhabit.remote_module.NekApi
 
 class Interactor(private val retrofitService: NekApi, private val preferences: PreferenceProvider) {
 
-    fun sendNek(nek: Nek) =
-        retrofitService.sendNek()
-            .subscribeOn(Schedulers.io())
-            .map {
-                Converter.convertNektoNekRequest(nek)
-            }
+    fun sendNek(nek: Nek) = retrofitService.sendNek(Converter.convertNektoNekRequest(nek))
+        .subscribeOn(Schedulers.io())
 }

@@ -27,7 +27,7 @@ class NekAddActivityViewModel: ViewModel() {
                 onError = {
                     it.printStackTrace()
                 },
-                onNext = {
+                onComplete = {
                     nekData.postValue(nek)
                     println(nekData)
                 }
