@@ -4,25 +4,31 @@ import android.app.Activity
 import android.app.DatePickerDialog
 import android.content.Context
 import android.content.Intent
-import android.content.pm.PackageManager
-import android.content.pm.ResolveInfo
 import android.net.Uri
-import androidx.appcompat.app.AppCompatActivity
+import android.os.Build
 import android.os.Bundle
 import android.os.Environment
 import android.provider.MediaStore
 import android.view.View
+import androidx.annotation.RequiresApi
+import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.FileProvider
 import androidx.lifecycle.ViewModelProvider
+import com.bumptech.glide.Glide
 import com.google.gson.Gson
 import ru.coolhabit.nekapp.data.Nek
 import ru.coolhabit.nekapp.data.User
 import ru.coolhabit.nekapp.databinding.ActivityNekAddBinding
 import ru.coolhabit.nekapp.ui.viewmodels.NekAddActivityViewModel
 import ru.coolhabit.nekapp.utils.AutoDisposable
+import ru.coolhabit.remote_module.entity.ImageRequest
 import java.io.File
+import java.nio.file.Files
+import java.nio.file.Path
+import java.nio.file.Paths
 import java.text.SimpleDateFormat
 import java.util.*
+
 
 private const val NOW = "Сегодня: "
 private const val PICTURE_FROM_CAMERA = 1
@@ -41,7 +47,7 @@ class NekAddActivity : AppCompatActivity() {
     private lateinit var photoFile: File
     lateinit var currentPhotoPath: String
     private var imageUri: Uri? = null
-
+    val photoList = mutableListOf<ImageRequest>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -76,7 +82,8 @@ class NekAddActivity : AppCompatActivity() {
                 userName = obj.name.toString(),
                 userSurname = obj.surname.toString(),
                 userEmail = obj.email.toString(),
-                userPhone = obj.phone.toString()
+                userPhone = obj.phone.toString(),
+                imageList = photoList
             )
 
             viewModel.sendNek(nek)
@@ -134,33 +141,56 @@ class NekAddActivity : AppCompatActivity() {
         }
     }
 
+    @RequiresApi(Build.VERSION_CODES.O)
+    private fun encodeFileToBase64 (file: File): String {
+        val filePath = file.path
+        val encoded = Files.readAllBytes(Paths.get(filePath))
+        return Base64.getEncoder().encodeToString(encoded)
+    }
+
+    @RequiresApi(Build.VERSION_CODES.O)
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         if (resultCode == Activity.RESULT_OK) {
 
             if (requestCode == PICTURE_FROM_CAMERA) {
                 val uri = FileProvider.getUriForFile(this, AUTHORITY, photoFile)
+
+                val nekConvertedImage = ImageRequest(encodeFileToBase64(photoFile), binding.photoDescriptionField.text.toString())
+                photoList.add(nekConvertedImage)
+
                 binding.nekPhoto.visibility = View.VISIBLE
                 binding.photoDescriptionHeader.visibility = View.VISIBLE
                 binding.photoDescriptionLayout.visibility = View.VISIBLE
                 binding.sendBtn.visibility = View.VISIBLE
-                binding.nekPhoto.setImageURI(uri)
+
                 binding.photoBtnCamera.visibility = View.GONE
                 binding.photoBtnMemory.visibility = View.GONE
                 binding.fromCamera.visibility = View.GONE
                 binding.fromGallery.visibility = View.GONE
                 binding.photoHint.visibility = View.GONE
+
+                Glide.with(this)
+                    .load(uri)
+                    .centerCrop()
+                    .into(binding.nekPhoto)
+
             } else if (requestCode == PICTURE_FROM_GALLERY) {
                 binding.nekPhoto.visibility = View.VISIBLE
-                imageUri = data?.data
-                binding.nekPhoto.setImageURI(imageUri)
                 binding.photoDescriptionHeader.visibility = View.VISIBLE
                 binding.photoDescriptionLayout.visibility = View.VISIBLE
                 binding.sendBtn.visibility = View.VISIBLE
+
                 binding.photoBtnCamera.visibility = View.GONE
                 binding.photoBtnMemory.visibility = View.GONE
                 binding.fromCamera.visibility = View.GONE
                 binding.fromGallery.visibility = View.GONE
                 binding.photoHint.visibility = View.GONE
+
+                imageUri = data?.data
+                Glide.with(this)
+                    .load(imageUri)
+                    .centerCrop()
+                    .into(binding.nekPhoto)
             }
         } else {
             super.onActivityResult(requestCode, resultCode, data)

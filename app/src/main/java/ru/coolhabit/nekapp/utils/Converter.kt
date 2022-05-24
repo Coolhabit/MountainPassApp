@@ -17,7 +17,7 @@ object Converter {
             user = UserRequest(nek.userId, nek.userEmail, nek.userPhone, nek.userSurname, nek.userName),
             coords = CoordsRequest(nek.latitude, nek.longtitude, nek.height),
             level = LevelRequest(nek.level, nek.level, nek.level, nek.level),
-            images = list
+            images = nek.imageList
         )
     }
 }
