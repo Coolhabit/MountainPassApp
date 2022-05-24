@@ -1,9 +1,13 @@
 package ru.coolhabit.nekapp.ui.activities
 
+import android.Manifest
+import android.Manifest.permission.READ_EXTERNAL_STORAGE
 import android.app.Activity
 import android.app.DatePickerDialog
+import android.app.PendingIntent.getActivity
 import android.content.Context
 import android.content.Intent
+import android.content.pm.PackageManager
 import android.net.Uri
 import android.os.Build
 import android.os.Bundle
@@ -12,6 +16,7 @@ import android.provider.MediaStore
 import android.view.View
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.app.ActivityCompat
 import androidx.core.content.FileProvider
 import androidx.lifecycle.ViewModelProvider
 import com.bumptech.glide.Glide
@@ -34,6 +39,7 @@ private const val PICTURE_FROM_CAMERA = 1
 private const val PICTURE_FROM_GALLERY = 2
 private const val AUTHORITY = "ru.coolhabit.nekapp.fileprovider"
 private const val MOCK_IMAGE = "не смог добыть сам файл при загрузке из галереи"
+private const val READ_EXTERNAL_STORAGE_REQUEST_CODE = 1001
 
 class NekAddActivity : AppCompatActivity() {
     private val viewModel by lazy {
@@ -108,8 +114,9 @@ class NekAddActivity : AppCompatActivity() {
         }
 
         binding.photoBtnMemory.setOnClickListener {
-            val gallery = Intent(Intent.ACTION_PICK, MediaStore.Images.Media.INTERNAL_CONTENT_URI)
-            startActivityForResult(gallery, PICTURE_FROM_GALLERY)
+//            val gallery = Intent(Intent.ACTION_PICK, MediaStore.Images.Media.INTERNAL_CONTENT_URI)
+//            startActivityForResult(gallery, PICTURE_FROM_GALLERY)
+            pickImage()
         }
     }
 
@@ -146,6 +153,21 @@ class NekAddActivity : AppCompatActivity() {
         val filePath = file.path
         val encoded = Files.readAllBytes(Paths.get(filePath))
         return Base64.getEncoder().encodeToString(encoded)
+    }
+
+    private fun uriToImageFile(uri: Uri): File? {
+        val filePathColumn = arrayOf(MediaStore.Images.Media.DATA)
+        val cursor = contentResolver.query(uri, filePathColumn, null, null, null)
+        if (cursor != null) {
+            if (cursor.moveToFirst()) {
+                val columnIndex = cursor.getColumnIndex(filePathColumn[0])
+                val filePath = cursor.getString(columnIndex)
+                cursor.close()
+                return File(filePath)
+            }
+            cursor.close()
+        }
+        return null
     }
 
     @RequiresApi(Build.VERSION_CODES.O)
@@ -188,9 +210,11 @@ class NekAddActivity : AppCompatActivity() {
 
 
                 imageUri = data?.data
-
-                val nekConvertedImage = ImageRequest(MOCK_IMAGE, binding.photoDescriptionField.text.toString())
-                photoList.add(nekConvertedImage)
+                if (imageUri != null) {
+                    val imageFile = uriToImageFile(imageUri!!)
+                    val nekConvertedImage = ImageRequest(encodeFileToBase64(imageFile!!), binding.photoDescriptionField.text.toString())
+                    photoList.add(nekConvertedImage)
+                }
 
                 Glide.with(this)
                     .load(imageUri)
@@ -199,6 +223,39 @@ class NekAddActivity : AppCompatActivity() {
             }
         } else {
             super.onActivityResult(requestCode, resultCode, data)
+        }
+    }
+
+    private fun pickImage() {
+        if (ActivityCompat.checkSelfPermission(this, READ_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED) {
+            val intent = Intent(
+                Intent.ACTION_PICK,
+                MediaStore.Images.Media.INTERNAL_CONTENT_URI
+            )
+            intent.type = "image/*"
+            intent.putExtra("crop", "true")
+            intent.putExtra("scale", true)
+            intent.putExtra("aspectX", 16)
+            intent.putExtra("aspectY", 9)
+            startActivityForResult(intent, PICTURE_FROM_GALLERY)
+        } else {
+            ActivityCompat.requestPermissions(
+                this,
+                arrayOf(Manifest.permission.READ_EXTERNAL_STORAGE),
+                READ_EXTERNAL_STORAGE_REQUEST_CODE
+            )
+        }
+    }
+
+    override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<out String>, grantResults: IntArray) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults)
+        when (requestCode) {
+            READ_EXTERNAL_STORAGE_REQUEST_CODE -> {
+                if (grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                    // pick image after request permission success
+                    pickImage()
+                }
+            }
         }
     }
 }
