@@ -24,7 +24,6 @@ import ru.coolhabit.nekapp.utils.AutoDisposable
 import ru.coolhabit.remote_module.entity.ImageRequest
 import java.io.File
 import java.nio.file.Files
-import java.nio.file.Path
 import java.nio.file.Paths
 import java.text.SimpleDateFormat
 import java.util.*
@@ -34,6 +33,7 @@ private const val NOW = "Сегодня: "
 private const val PICTURE_FROM_CAMERA = 1
 private const val PICTURE_FROM_GALLERY = 2
 private const val AUTHORITY = "ru.coolhabit.nekapp.fileprovider"
+private const val MOCK_IMAGE = "не смог добыть сам файл при загрузке из галереи"
 
 class NekAddActivity : AppCompatActivity() {
     private val viewModel by lazy {
@@ -186,7 +186,12 @@ class NekAddActivity : AppCompatActivity() {
                 binding.fromGallery.visibility = View.GONE
                 binding.photoHint.visibility = View.GONE
 
+
                 imageUri = data?.data
+
+                val nekConvertedImage = ImageRequest(MOCK_IMAGE, binding.photoDescriptionField.text.toString())
+                photoList.add(nekConvertedImage)
+
                 Glide.with(this)
                     .load(imageUri)
                     .centerCrop()

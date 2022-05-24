@@ -1,11 +1,8 @@
 package ru.coolhabit.nekapp.ui.viewmodels
 
-import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import io.reactivex.rxjava3.core.Observable
 import io.reactivex.rxjava3.kotlin.subscribeBy
-import io.reactivex.rxjava3.subjects.BehaviorSubject
 import ru.coolhabit.nekapp.App
 import ru.coolhabit.nekapp.data.Nek
 import ru.coolhabit.nekapp.domain.Interactor
