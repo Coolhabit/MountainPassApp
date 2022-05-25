@@ -4,6 +4,9 @@ import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.telephony.PhoneNumberFormattingTextWatcher
+import android.util.Patterns
+import com.google.android.material.snackbar.Snackbar
 import com.google.gson.Gson
 import ru.coolhabit.nekapp.data.User
 import ru.coolhabit.nekapp.databinding.ActivityRegBinding
@@ -17,9 +20,18 @@ class RegActivity : AppCompatActivity() {
         binding = ActivityRegBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+
+
         binding.enterBtn.setOnClickListener {
-            registerCheck()
+            if (checkAllFields()) {
+                registerCheck()
+            } else {
+                Snackbar.make(binding.root, "Не удалось войти", Snackbar.LENGTH_SHORT)
+                    .show()
+            }
         }
+
+        binding.phoneField.addTextChangedListener(PhoneNumberFormattingTextWatcher())
     }
 
     private fun registerCheck() {
@@ -57,5 +69,34 @@ class RegActivity : AppCompatActivity() {
         val gson = Gson()
         val json = gson.toJson(obj)
         editor.putString("User", json).apply()
+    }
+
+    private fun checkAllFields(): Boolean {
+        if (binding.surnameField.length() == 0) {
+            binding.surnameField.error = SURNAME_ERROR
+            return false
+        }
+        if (binding.nameField.length() == 0) {
+            binding.nameField.error = NAME_ERROR
+            return false
+        }
+        if (binding.emailField.length() == 0) {
+            binding.emailField.error = EMAIL_NULL
+            return false
+        }
+        if (!binding.emailField.text.toString().matches(EMAIL_PATTERN.toRegex())) {
+            binding.emailField.error = EMAIL_ERROR
+            return false
+        }
+
+        return true
+    }
+
+    companion object {
+        private const val EMAIL_PATTERN = "[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+"
+        private const val SURNAME_ERROR = "Введите фамилию!"
+        private const val NAME_ERROR = "Введите имя!"
+        private const val EMAIL_NULL = "Введите электронную почту!"
+        private const val EMAIL_ERROR = "Неверный формат электронной почты!"
     }
 }
