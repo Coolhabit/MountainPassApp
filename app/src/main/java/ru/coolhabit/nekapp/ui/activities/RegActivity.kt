@@ -18,16 +18,20 @@ class RegActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         binding.enterBtn.setOnClickListener {
-            val shared = this.getSharedPreferences("settings", Context.MODE_PRIVATE)
-            val gson = Gson()
-            val json = shared.getString("User", "")
-            val obj = gson.fromJson(json, User::class.java)
-            if (obj == null) {
-                saveUser()
-                startActivity(Intent(this@RegActivity, NekListActivity::class.java))
-            } else {
-                startActivity(Intent(this@RegActivity, NekListActivity::class.java))
-            }
+            registerCheck()
+        }
+    }
+
+    private fun registerCheck() {
+        val shared = this.getSharedPreferences("settings", Context.MODE_PRIVATE)
+        val gson = Gson()
+        val json = shared.getString("User", "")
+        val obj = gson.fromJson(json, User::class.java)
+        if (obj == null) {
+            saveUser()
+            startActivity(Intent(this@RegActivity, NekListActivity::class.java))
+        } else {
+            startActivity(Intent(this@RegActivity, NekListActivity::class.java))
         }
     }
 
@@ -53,6 +57,5 @@ class RegActivity : AppCompatActivity() {
         val gson = Gson()
         val json = gson.toJson(obj)
         editor.putString("User", json).apply()
-
     }
 }
