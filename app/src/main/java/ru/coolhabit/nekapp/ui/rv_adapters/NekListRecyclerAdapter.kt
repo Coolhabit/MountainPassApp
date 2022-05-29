@@ -14,12 +14,12 @@ class NekListRecyclerAdapter(private val clickListener: OnItemClickListener) : R
     //Этот метод нужно переопределить на возврат количества элементов в списке RV
     override fun getItemCount() = items.size
 
-    //В этом методе мы привязываем наш ViewHolder и передаем туда "надутую" верстку нашего фильма
+    //В этом методе мы привязываем наш ViewHolder и передаем туда "надутую" верстку нашего перевала
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         return NekListViewHolder(LayoutInflater.from(parent.context).inflate(R.layout.nek_item, parent, false))
     }
 
-    //В этом методе будет привзяка полей из объекта Cast, к view из cast_item.xml
+    //В этом методе будет привзяка полей из объекта Nek, к view из nek_item.xml
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         //Проверяем какой у нас ViewHolder
         when (holder) {
