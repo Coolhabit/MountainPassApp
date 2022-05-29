@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <com.google.android.material.checkbox.MaterialCheckBox
+        android:id="@+id/nek_select"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/nek_name"
+        app:layout_constraintBottom_toBottomOf="@id/nek_date"/>
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/nek_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textStyle="bold"
+        android:layout_marginTop="@dimen/margin_min"
+        app:layout_constraintStart_toEndOf="@id/nek_select"
+        app:layout_constraintTop_toTopOf="parent"
+        android:text="@string/nek_name"/>
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/nek_photo_count"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margin_min"
+        app:layout_constraintStart_toEndOf="@id/nek_select"
+        app:layout_constraintTop_toBottomOf="@id/nek_name"
+        android:text="@string/nek_photo_count"/>
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/nek_date"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margin_min"
+        app:layout_constraintStart_toEndOf="@id/nek_select"
+        app:layout_constraintTop_toBottomOf="@id/nek_photo_count"
+        android:text="@string/nek_date_text"/>
+
+    <ImageView
+        android:id="@+id/btn_plus"
+        android:layout_width="@dimen/rv_btn_size"
+        android:layout_margin="@dimen/margin_min"
+        android:layout_height="@dimen/rv_btn_size"
+        app:layout_constraintEnd_toStartOf="@id/btn_edit"
+        app:layout_constraintTop_toTopOf="parent"
+        android:src="@drawable/btn_plus"/>
+
+    <ImageView
+        android:id="@+id/btn_edit"
+        android:layout_width="@dimen/rv_btn_size"
+        android:layout_margin="@dimen/margin_min"
+        android:layout_height="@dimen/rv_btn_size"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:src="@drawable/btn_edit"/>
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/btn_plus_text"
+        android:layout_width="wrap_content"
+        android:textSize="@dimen/rv_btn_text_size"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/btn_plus"
+        app:layout_constraintStart_toStartOf="@id/btn_plus"
+        app:layout_constraintEnd_toEndOf="@id/btn_plus"
+        android:text="@string/btn_plus_text"/>
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/btn_edit_text"
+        android:layout_width="wrap_content"
+        android:textSize="@dimen/rv_btn_text_size"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/btn_edit"
+        app:layout_constraintStart_toStartOf="@id/btn_edit"
+        app:layout_constraintEnd_toEndOf="@id/btn_edit"
+        android:text="@string/btn_edit_text"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -26,6 +26,11 @@
     <string name="username_default">Лоханкин Васисуалий</string>
     <string name="neklist_instructions">Нажмите на + \n чтобы добавить перевал</string>
     <string name="neklist_link_text">Посмотреть базу перевалов</string>
+    <string name="btn_plus_text">добавить \n описание</string>
+    <string name="btn_edit_text">редакти \n ровать</string>
+    <string name="nek_date_text">дата прохождения</string>
+    <string name="nek_photo_count">количество фото</string>
+    <string name="nek_name">название перевала</string>
 
     //nekadd activity
     <string name="info_icon">Инфо-иконка</string>
@@ -65,4 +70,6 @@
     <string name="photo_description_hint">Описание фото</string>
     <string name="photo_description_default">Перевал соединяет озеро Верхнее Крепкое и реку Тихая. При подъеме открываются красивые виды на озеро Крепкое. После подъема более плоский участок.</string>
     <string name="send_btn">ОТПРАВИТЬ</string>
+
+    //
 </resources>

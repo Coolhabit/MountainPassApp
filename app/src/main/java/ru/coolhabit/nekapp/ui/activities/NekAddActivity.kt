@@ -114,8 +114,6 @@ class NekAddActivity : AppCompatActivity() {
         }
 
         binding.photoBtnMemory.setOnClickListener {
-//            val gallery = Intent(Intent.ACTION_PICK, MediaStore.Images.Media.INTERNAL_CONTENT_URI)
-//            startActivityForResult(gallery, PICTURE_FROM_GALLERY)
             pickImage()
         }
     }

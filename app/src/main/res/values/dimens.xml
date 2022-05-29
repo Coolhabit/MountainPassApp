@@ -36,6 +36,8 @@
 
     <dimen name="instructions_text_size">24sp</dimen>
     <dimen name="link_text_size">16sp</dimen>
+    <dimen name="rv_btn_size">49dp</dimen>
+    <dimen name="rv_btn_text_size">9sp</dimen>
 
     //nekadd activity
     <dimen name="checkbox_text_size">9sp</dimen>
